@@ -38,6 +38,7 @@ def deleteData(request):
     course.delete()
     return JsonResponse({"message": "Data berhasil dihapus"})
 
+# register
 @csrf_exempt
 def register(request):
     if request.method == 'POST':
@@ -74,6 +75,7 @@ def list_course_contents(request, course_id):
     data = serializers.serialize("json", contents)
     return JsonResponse(data, safe=False)
 
+#  batch
 @csrf_exempt
 def enroll_student(request):
     if request.method == 'POST':
