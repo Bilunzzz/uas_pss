@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Course(models.Model):
-    name = models.CharField("Nama Kursus", max_length=255)
-    description = models.TextField("Deskripsi")
+    name = models.CharField(max_length=100)
+    description = models.TextField()
     price = models.IntegerField("Harga")
     image = models.ImageField("Gambar", upload_to="course", blank=True, null=True)
     teacher = models.ForeignKey(User, verbose_name="Pengajar", on_delete=models.RESTRICT)
@@ -18,6 +18,7 @@ class Course(models.Model):
         verbose_name = "Mata Kuliah"
         verbose_name_plural = "Data Mata Kuliah"
         ordering = ["-created_at"]
+        app_label = 'lms_core'
 
     def is_member(self, user):
         return CourseMember.objects.filter(course_id=self, user_id=user).exists()

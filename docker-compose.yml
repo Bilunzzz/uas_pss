@@ -1,6 +1,6 @@
 services:
   django:
-    container_name: prepare_lms
+    container_name: uas_lms
     build: .
     volumes:
       - ./code:/code
